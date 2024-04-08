@@ -2,7 +2,7 @@
 
 ## MYSQL
 ### Scripts
-- Get the columns from a database table in a format that can be converted to a TypeScript interface:
+Get the columns from a database table in a format that can be converted to a TypeScript interface:
 ```MYSQL
 SELECT 
     CONCAT(COLUMN_NAME, 
@@ -27,7 +27,7 @@ ORDER BY
     ORDINAL_POSITION;
 ```
 
-- Get the columns from a database table in a format that can be converted to a PHP DTO:
+Get the columns from a database table in a format that can be converted to a PHP DTO:
 ```MYSQL
 SELECT 
     CONCAT(
