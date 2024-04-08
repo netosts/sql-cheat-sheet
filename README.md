@@ -36,8 +36,8 @@ SELECT
             ELSE ''
         END,
         CASE 
-            WHEN DATA_TYPE IN ('varchar', 'char', 'date', 'timestamp') THEN 'string'
-            WHEN DATA_TYPE IN ('int', 'double') THEN 'int'
+            WHEN DATA_TYPE IN ('varchar', 'char', 'date', 'timestamp', 'text') THEN 'string'
+            WHEN DATA_TYPE IN ('int', 'double', 'decimal') THEN 'int'
             WHEN DATA_TYPE IN ('tinyint') THEN 'bool'
             ELSE DATA_TYPE -- For other data types, just return the original SQL data type
         END
