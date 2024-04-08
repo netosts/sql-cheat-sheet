@@ -13,7 +13,8 @@ SELECT
     CONCAT(
         CASE 
             WHEN DATA_TYPE IN ('varchar', 'char', 'date', 'timestamp') THEN 'string'
-            WHEN DATA_TYPE IN ('int', 'tinyint', 'double') THEN 'number'
+            WHEN DATA_TYPE IN ('int', 'double') THEN 'number'
+            WHEN DATA_TYPE IN ('tinyint') THEN 'boolean'
             ELSE DATA_TYPE -- For other data types, just return the original SQL data type
         END,
         ';'
@@ -24,4 +25,5 @@ WHERE
     TABLE_NAME = 'YourTableName'
 ORDER BY 
     ORDINAL_POSITION;
+
 ```
