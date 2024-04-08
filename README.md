@@ -5,21 +5,23 @@
 - Get the columns from a database table in a format that can be converted to a TypeScript interface:
 ```MYSQL
 SELECT 
-    COLUMN_NAME AS name,
-    CONCAT(DATA_TYPE, 
+    CONCAT(COLUMN_NAME, 
         CASE
-            WHEN CHARACTER_MAXIMUM_LENGTH IS NOT NULL THEN CONCAT('(', CHARACTER_MAXIMUM_LENGTH, ')')
+            WHEN IS_NULLABLE = 'YES' THEN '?'
             ELSE ''
-        END) AS type,
-    CASE
-        WHEN IS_NULLABLE = 'YES' THEN ' | null'
-        ELSE ''
-    END AS nullable
+        END, ':') AS name,
+    CONCAT(
+        CASE 
+            WHEN DATA_TYPE IN ('varchar', 'char', 'date', 'timestamp') THEN 'string'
+            WHEN DATA_TYPE IN ('int', 'tinyint', 'double') THEN 'number'
+            ELSE DATA_TYPE -- For other data types, just return the original SQL data type
+        END,
+        ';'
+    ) AS type
 FROM 
     INFORMATION_SCHEMA.COLUMNS
 WHERE 
     TABLE_NAME = 'YourTableName'
 ORDER BY 
     ORDINAL_POSITION;
-
 ```
