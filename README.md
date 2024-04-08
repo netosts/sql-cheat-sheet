@@ -12,8 +12,8 @@ SELECT
         END, ':') AS name,
     CONCAT(
         CASE 
-            WHEN DATA_TYPE IN ('varchar', 'char', 'date', 'timestamp') THEN 'string'
-            WHEN DATA_TYPE IN ('int', 'double') THEN 'number'
+            WHEN DATA_TYPE IN ('varchar', 'char', 'date', 'timestamp', 'text') THEN 'string'
+            WHEN DATA_TYPE IN ('int', 'double', 'decimal') THEN 'number'
             WHEN DATA_TYPE IN ('tinyint') THEN 'boolean'
             ELSE DATA_TYPE -- For other data types, just return the original SQL data type
         END,
@@ -25,7 +25,6 @@ WHERE
     TABLE_NAME = 'YourTableName'
 ORDER BY 
     ORDINAL_POSITION;
-
 ```
 
 - Get the columns from a database table in a format that can be converted to a PHP DTO:
@@ -47,7 +46,7 @@ SELECT
 FROM 
     INFORMATION_SCHEMA.COLUMNS
 WHERE 
-    TABLE_NAME = 'divida_livros'
+    TABLE_NAME = 'YourTableName'
 ORDER BY 
     ORDINAL_POSITION;
 ```
