@@ -13,7 +13,7 @@ SELECT
     CONCAT(
         CASE 
             WHEN DATA_TYPE IN ('varchar', 'char', 'date', 'timestamp', 'text') THEN 'string'
-            WHEN DATA_TYPE IN ('int', 'double', 'decimal') THEN 'number'
+            WHEN DATA_TYPE IN ('int', 'double', 'decimal', 'bigint') THEN 'number'
             WHEN DATA_TYPE IN ('tinyint') THEN 'boolean'
             ELSE DATA_TYPE -- For other data types, just return the original SQL data type
         END,
