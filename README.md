@@ -41,7 +41,7 @@ SELECT
             WHEN DATA_TYPE IN ('int', 'bigint') THEN 'int'
             WHEN DATA_TYPE IN ('double', 'decimal') THEN 'float'
             WHEN DATA_TYPE IN ('tinyint') THEN 'bool'
-            WHEN DATA_TYPE IN ('json') THEN 'object'
+            WHEN DATA_TYPE IN ('json') THEN 'array'
             ELSE DATA_TYPE -- For other data types, just return the original SQL data type
         END
     ) AS type,
