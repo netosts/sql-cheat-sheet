@@ -39,7 +39,7 @@ SELECT
     CONCAT(
         CASE 
             WHEN DATA_TYPE IN ('varchar', 'char', 'date', 'character varying', 'timestamp', 'timestamp without time zone', 'text') THEN 'string'
-            WHEN DATA_TYPE IN ('int', 'double', 'decimal', 'bigint') THEN 'number'
+            WHEN DATA_TYPE IN ('int', 'double', 'decimal', 'bigint', 'integer', 'numeric') THEN 'number'
             WHEN DATA_TYPE IN ('tinyint') THEN 'boolean'
             WHEN DATA_TYPE IN ('json') THEN 'object'
             ELSE DATA_TYPE -- For other data types, just return the original SQL data type
@@ -64,7 +64,7 @@ SELECT
         END,
         CASE 
             WHEN DATA_TYPE IN ('varchar', 'char', 'date', 'character varying', 'timestamp', 'timestamp without time zone', 'text') THEN 'string'
-            WHEN DATA_TYPE IN ('int', 'bigint') THEN 'int'
+            WHEN DATA_TYPE IN ('int', 'bigint', 'integer', 'numeric') THEN 'int'
             WHEN DATA_TYPE IN ('double', 'decimal') THEN 'float'
             WHEN DATA_TYPE IN ('tinyint') THEN 'bool'
             WHEN DATA_TYPE IN ('json') THEN 'array'
