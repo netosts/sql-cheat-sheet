@@ -13,7 +13,7 @@ SELECT
         END,
         CASE 
             WHEN DATA_TYPE IN ('character varying', 'varchar', 'char', 'character') AND CHARACTER_MAXIMUM_LENGTH BETWEEN 0 AND 255 THEN CONCAT(', ''max:', CHARACTER_MAXIMUM_LENGTH, '''')
-            when DATA_TYPE in ('int8', 'bigserial', 'bigint') then CONCAT(', ''', 'numeric', '''')
+            when DATA_TYPE in ('int8', 'bigserial', 'bigint', 'integer', 'numeric') then CONCAT(', ''', 'numeric', '''')
             ELSE CONCAT(', ''', DATA_TYPE, '''')
         END,
         ' ],'
